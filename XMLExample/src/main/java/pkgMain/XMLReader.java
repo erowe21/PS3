@@ -13,14 +13,17 @@ import pkgLibrary.Catalog;
 public class XMLReader {
 
 	public static void main(String[] args) {
-
 		Catalog cat = null;
 		
 		//	Read the XML catalog into 'cat'
 		cat = ReadCatalog();
 		
-		//	Increase the price of each book
-		IncreasePrice(cat,0.10);
+		/*//	Increase the price of each book
+		IncreasePrice(cat,0.10);*/
+		
+		//setCost to .8 of Price
+		SetCost(cat);
+		
 		
 		//	Write the XML file from 'cat' object
 		WriteXMLFile(cat);
@@ -44,6 +47,16 @@ public class XMLReader {
 		for (Book b : cat.getBooks()) {
 			double newPrice = (b.getPrice() * PriceIncrease) + b.getPrice();			
 			b.setPrice(Math.round(newPrice * 100.0) / 100.0);
+		}
+		
+		return cat;
+	}
+	
+	private static Catalog SetCost(Catalog cat)
+	{
+		for (Book b : cat.getBooks()) {
+			double newCost = (b.getPrice() * .8);			
+			b.setCost(Math.round(newCost * 100.0) / 100.0);
 		}
 		
 		return cat;

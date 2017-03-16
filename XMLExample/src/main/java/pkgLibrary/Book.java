@@ -6,6 +6,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import pkgException.BookException;
+
 public class Book {
 
 	private String id;
@@ -15,6 +17,7 @@ public class Book {
 	private double price;
 	private Date publish_date;
 	private String description;
+	private double cost;
 
 	public Book() {
 
@@ -32,7 +35,29 @@ public class Book {
 		this.description = description;
 	}
 	
- 
+	//No longer used. Moved the finding of books into Catalog. Keeping in case of need to re-instantiate.
+	/*
+	public Book(String id, Catalog cat) throws BookException{ 
+
+		boolean isFound = false;
+		for (Book b: cat.getBooks()){
+			if (b.getId().equals(id)) {
+				isFound = true;
+				this.id = b.getId();
+				this.author = b.getAuthor();
+				this.title = b.getTitle();
+				this.genre = b.getGenre();
+				this.price = b.getPrice();
+				this.publish_date = b.getPublish_date();
+				this.description = b.getDescription();
+				this.cost = b.getCost();
+			}
+			if(!isFound){
+				throw new BookException(id);
+			}
+		}
+	}*/
+
 
 	public String getId() {
 		return id;
@@ -97,7 +122,16 @@ public class Book {
 		this.description = description;
 	}
 
-	
-	
+	public double getCost() {
+		return cost;
+	}
+
+	public void setCost(double cost) {
+		this.cost = cost;
+	}
+
+
+
+
 
 }
