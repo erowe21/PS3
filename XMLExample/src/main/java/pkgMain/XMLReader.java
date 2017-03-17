@@ -84,7 +84,7 @@ public class XMLReader {
 	}
 
 	private static Catalog ReadXMLFile() {
-
+		
 		Catalog cat = null;
 
 		String basePath = new File("").getAbsolutePath();

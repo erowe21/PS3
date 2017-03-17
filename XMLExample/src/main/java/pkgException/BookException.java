@@ -1,15 +1,13 @@
 package pkgException;
 
 import pkgLibrary.Book;
+import pkgLibrary.Catalog;
 
 public class BookException extends Exception{
 	private Book badBook;
+	private Catalog cat;
 
-	public BookException(){
-		super();
-	}
-
-	public BookException(String id){
+	public BookException(Catalog cat, String id){
 		super();
 		this.badBook = new Book();
 		badBook.setId(id);

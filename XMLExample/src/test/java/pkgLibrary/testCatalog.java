@@ -16,9 +16,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import junit.framework.Assert;
-import pkgException.BookException;
-import pkgMain.XMLReader;
 
 
 public class testCatalog {
@@ -48,6 +45,8 @@ public class testCatalog {
 		Book newBook = new Book("bk113", "Jared Glaser", "CISC 181 Lab", "Computer Science", 100.00, d, "Book about a lab" );
 
 		cat.addBook("bk113", newBook);
+		WriteXMLFile(cat);
+		cat = ReadXMLFile();
 
 		if(cat.books.size() > sizeInitial){
 			pass = true;
@@ -65,9 +64,9 @@ public class testCatalog {
 		Date d = new Date();
 		Book newBook = new Book("bk112", "Galos, Mike", "Visual Studio 7: A Comprehensive Guide", "Computer", 49.95, d, "Microsoft Visual Studio 7 is explored in depth, looking at how Visual Basic, Visual C++, C#, and ASP+ are integrated into a comprehensive development environment." );
 
-
 		cat.addBook("bk112", newBook);
-
+		WriteXMLFile(cat);
+		cat = ReadXMLFile();
 
 		if(cat.books.size() == sizeInitial){
 			pass = true;
@@ -76,7 +75,7 @@ public class testCatalog {
 		assertEquals(true, pass);
 
 	}
-	
+
 	@Test
 	public void testGetBook(){
 		boolean pass = false;
@@ -85,17 +84,17 @@ public class testCatalog {
 		if(test.getId().equals("bk112") && test.getGenre().equals("Computer")){ //threw in the computer just to double check.
 			pass = true;
 		}
-		
+
 		assertEquals(true, pass);
 	}
-	
+
 	@Test
 	public void testGetBook2(){
 		boolean pass = false;
 		Catalog cat = ReadXMLFile();
 		if(cat.getBook("bk298") == null)
 			pass = true;
-		
+
 		assertEquals(true, pass);
 	}
 
@@ -119,6 +118,27 @@ public class testCatalog {
 
 		return cat;
 
+	}
+
+	private void WriteXMLFile(Catalog cat) {
+		try {
+
+			String basePath = new File("").getAbsolutePath();
+			basePath = basePath + "\\src\\main\\resources\\XMLFiles\\Books.xml";
+			File file = new File(basePath);
+
+			JAXBContext jaxbContext = JAXBContext.newInstance(Catalog.class);
+			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+			// output pretty printed
+			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+			jaxbMarshaller.marshal(cat, file);
+			jaxbMarshaller.marshal(cat, System.out);
+
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

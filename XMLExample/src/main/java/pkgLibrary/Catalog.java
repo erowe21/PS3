@@ -48,10 +48,13 @@ public class Catalog {
 				return b;
 			}
 		}
-		throw new BookException(id);
+		throw new BookException(this, id);
 		}
 		catch (BookException be){
 			System.out.println("could not find matching book with ID: " + id);
+		}
+		catch (Exception ex){
+			throw ex;
 		}
 		return null;
 	}
@@ -60,47 +63,18 @@ public class Catalog {
 		try{ 
 			for (Book b: this.getBooks()){
 				if(b.getId().equals(id)){
-					throw new BookException(b);
+					throw new BookException(this, id);
 				}
 			}
 			this.getBooks().add(book);
-			WriteXMLFile();
+			
 		}
 		catch (BookException be){
 			System.out.println(be.getBadBook().getId() + " could not be added due to another book containing the same ID.");
 		}
-	}
-
-	private void WriteXMLFile() {
-		try {
-
-			String basePath = new File("").getAbsolutePath();
-			basePath = basePath + "\\src\\main\\resources\\XMLFiles\\Books.xml";
-			File file = new File(basePath);
-
-			JAXBContext jaxbContext = JAXBContext.newInstance(Catalog.class);
-			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-
-			// output pretty printed
-			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-			jaxbMarshaller.marshal(this, file);
-			jaxbMarshaller.marshal(this, System.out);
-
-		} catch (JAXBException e) {
-			e.printStackTrace();
+		catch (Exception ex){
+			throw ex;
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 }
