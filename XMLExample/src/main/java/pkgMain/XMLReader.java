@@ -67,7 +67,6 @@ public class XMLReader {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Catalog.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
-			// output pretty printed
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
 			jaxbMarshaller.marshal(cat, file);

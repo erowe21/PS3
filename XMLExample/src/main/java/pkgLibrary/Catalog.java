@@ -50,7 +50,7 @@ public class Catalog {
 		throw new BookException(this, id);
 		}
 		catch (BookException bex){
-			System.out.println("No book with ID: " + id);
+			System.out.println("No book with ID#: " + id);
 		}
 		catch (Exception e){
 			throw e;
