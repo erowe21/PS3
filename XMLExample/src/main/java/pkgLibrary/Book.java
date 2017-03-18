@@ -99,7 +99,7 @@ public class Book {
 		this.description = description;
 	}
 
-	public double getCost() {
+	public double getCost()  {
 		return cost;
 	}
 

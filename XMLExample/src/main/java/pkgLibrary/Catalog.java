@@ -69,7 +69,7 @@ public class Catalog {
 			
 		}
 		catch (BookException bex){
-			System.out.println(bex.getnotBook().getId() + " Can't add book");
+			System.out.println(bex.getnotBook().getId() + " Can't add this book");
 		}
 		catch (Exception e){
 			throw e;
