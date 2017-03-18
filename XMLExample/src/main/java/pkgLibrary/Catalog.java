@@ -47,7 +47,7 @@ public class Catalog {
 				return b;
 			}
 		}
-		throw new BookException(this, id);
+		throw new BookException_(this, id);
 		}
 		catch (BookException bex){
 			System.out.println("No book with ID#: " + id);
@@ -62,13 +62,13 @@ public class Catalog {
 		try{ 
 			for (Book b: this.getBooks()){
 				if(b.getId().equals(id)){
-					throw new BookException(this, id);
+					throw new BookException_(this, id);
 				}
 			}
 			this.getBooks().add(book);
 			
 		}
-		catch (BookException bex){
+		catch (BookException_ bex){
 			System.out.println(bex.getnotBook().getId() + " Can't add this book");
 		}
 		catch (Exception e){
