@@ -141,4 +141,13 @@
         <publish_date>2001-04-16T00:00:00-04:00</publish_date>
         <title>Visual Studio 7: A Comprehensive Guide</title>
     </book>
+    <book id="bk121">
+        <author>Smith, Joe</author>
+        <cost>0.0</cost>
+        <description>Decades of suffering</description>
+        <genre>Horror</genre>
+        <price>21.0</price>
+        <publish_date>2017-03-18T15:03:01.717-04:00</publish_date>
+        <title>Eagles Football</title>
+    </book>
 </catalog>

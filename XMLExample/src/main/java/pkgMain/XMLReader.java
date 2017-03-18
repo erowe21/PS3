@@ -14,18 +14,13 @@ public class XMLReader {
 
 	public static void main(String[] args) {
 		Catalog cat = null;
-		
-		//	Read the XML catalog into 'cat'
+
 		cat = ReadCatalog();
+
 		
-		/*//	Increase the price of each book
-		IncreasePrice(cat,0.10);*/
-		
-		//setCost to .8 of Price
 		SetCost(cat);
 		
 		
-		//	Write the XML file from 'cat' object
 		WriteXMLFile(cat);
 		
 	}
@@ -36,7 +31,7 @@ public class XMLReader {
 	private static Catalog ReadCatalog() {
 		Catalog cat = ReadXMLFile();
 		
-		System.out.println("cat ID " + cat.getId());
+		System.out.println("catalog ID " + cat.getId());
 		System.out.println("Book count: " + cat.getBooks().size());
 
 		return cat;		

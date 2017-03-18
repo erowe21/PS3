@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.*;
 
 import org.xml.sax.XMLReader;
 
-import pkgException.BookException;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -50,11 +49,11 @@ public class Catalog {
 		}
 		throw new BookException(this, id);
 		}
-		catch (BookException be){
-			System.out.println("could not find matching book with ID: " + id);
+		catch (BookException bex){
+			System.out.println("No book with ID: " + id);
 		}
-		catch (Exception ex){
-			throw ex;
+		catch (Exception e){
+			throw e;
 		}
 		return null;
 	}
@@ -69,11 +68,11 @@ public class Catalog {
 			this.getBooks().add(book);
 			
 		}
-		catch (BookException be){
-			System.out.println(be.getBadBook().getId() + " could not be added due to another book containing the same ID.");
+		catch (BookException bex){
+			System.out.println(bex.getnotBook().getId() + " Can't add book");
 		}
-		catch (Exception ex){
-			throw ex;
+		catch (Exception e){
+			throw e;
 		}
 	}
 
