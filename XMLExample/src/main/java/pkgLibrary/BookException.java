@@ -1,16 +1,16 @@
 package pkgLibrary;
 
-public class BookException_ extends Exception{
+public class BookException extends Exception{
 	private Book notBook;
 	private Catalog cat;
 
-	public BookException_(Catalog cat, String id){
+	public BookException(Catalog cat, String id){
 		super();
 		this.notBook = new Book();
 		notBook.setId(id);
 	}
 	
-	public BookException_(Book book){
+	public BookException(Book book){
 		super();
 		this.notBook = book;
 	}
